@@ -39,9 +39,9 @@ namespace WavDotNet.Core
             }
 
             var algo = manager.GetAlgo();
-            var converted = new TOut[samples.LongLength];
+            var converted = new TOut[samples.Length];
 
-            for (var i = 0L; i < converted.LongLength; i++)
+            for (var i = 0L; i < converted.Length; i++)
             {
                 converted[i] = algo(samples[i]);
             }

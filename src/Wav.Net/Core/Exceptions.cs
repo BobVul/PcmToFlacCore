@@ -19,11 +19,9 @@
 
 
 using System;
-using System.Runtime.Serialization;
 
 namespace WavDotNet.Core
 {
-    [Serializable]
     public class UnrecognisedWavFileException : Exception
     {
         public UnrecognisedWavFileException()
@@ -40,14 +38,9 @@ namespace WavDotNet.Core
         {
 
         }
-
-        protected UnrecognisedWavFileException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-
-        }
+        
     }
-
-    [Serializable]
+    
     public class InvalidWavDataException : Exception
     {
         public InvalidWavDataException()
@@ -64,14 +57,8 @@ namespace WavDotNet.Core
         {
 
         }
-
-        protected InvalidWavDataException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-
-        }
     }
-
-    [Serializable]
+    
     public class ReadOnlyObjectException : Exception
     {
         public ReadOnlyObjectException()
@@ -88,14 +75,8 @@ namespace WavDotNet.Core
         {
 
         }
-
-        protected ReadOnlyObjectException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-
-        }
     }
-
-    [Serializable]
+    
     public class AlreadyFlushedException : Exception
     {
         public AlreadyFlushedException()
@@ -109,11 +90,6 @@ namespace WavDotNet.Core
         }
 
         public AlreadyFlushedException(string message, Exception innerException) : base(message, innerException)
-        {
-
-        }
-
-        protected AlreadyFlushedException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
 
         }
