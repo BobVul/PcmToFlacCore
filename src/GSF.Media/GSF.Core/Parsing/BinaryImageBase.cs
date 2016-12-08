@@ -34,7 +34,6 @@ namespace GSF.Parsing
     /// <summary>
     /// Defines a base class that represents binary images for parsing or generation in terms of a header, body and footer.
     /// </summary>
-    [Serializable]
     public abstract class BinaryImageBase : ISupportBinaryImage
     {
         #region [ Properties ]

@@ -92,7 +92,6 @@ namespace GSF
     /// signed integer.
     /// </para>
     /// </remarks>
-    [Serializable]
     public struct Int24 : IComparable, IFormattable, IConvertible, IComparable<Int24>, IComparable<Int32>, IEquatable<Int24>, IEquatable<Int32>
     {
         #region [ Members ]
@@ -1376,7 +1375,7 @@ namespace GSF
         /// <param name="value1">Left hand operand.</param>
         /// <param name="value2">Right hand operand.</param>
         /// <returns>Double that is the result of the operation.</returns>
-        [EditorBrowsable(EditorBrowsableState.Advanced), SpecialName]
+        //[EditorBrowsable(EditorBrowsableState.Advanced), SpecialName]
         public static double op_Exponent(Int24 value1, Int24 value2)
         {
             return Math.Pow((double)value1, (double)value2);
@@ -1388,7 +1387,7 @@ namespace GSF
         /// <param name="value1">Left hand operand.</param>
         /// <param name="value2">Right hand operand.</param>
         /// <returns>Double that is the result of the operation.</returns>
-        [EditorBrowsable(EditorBrowsableState.Advanced), SpecialName]
+        //[EditorBrowsable(EditorBrowsableState.Advanced), SpecialName]
         public static double op_Exponent(int value1, Int24 value2)
         {
             return Math.Pow((double)value1, (double)value2);
@@ -1400,7 +1399,7 @@ namespace GSF
         /// <param name="value1">Left hand operand.</param>
         /// <param name="value2">Right hand operand.</param>
         /// <returns>Double that is the result of the operation.</returns>
-        [EditorBrowsable(EditorBrowsableState.Advanced), SpecialName]
+        //[EditorBrowsable(EditorBrowsableState.Advanced), SpecialName]
         public static double op_Exponent(Int24 value1, int value2)
         {
             return Math.Pow((double)value1, (double)value2);

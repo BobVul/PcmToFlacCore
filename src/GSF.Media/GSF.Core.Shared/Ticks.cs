@@ -133,7 +133,6 @@ namespace GSF
     /// </para>
     /// </remarks>
     // ReSharper disable RedundantNameQualifier
-    [Serializable]
     public struct Ticks : IComparable, IFormattable, IConvertible, IComparable<Ticks>, IComparable<Int64>, IComparable<DateTime>, IComparable<TimeSpan>, IEquatable<Ticks>, IEquatable<Int64>, IEquatable<DateTime>, IEquatable<TimeSpan>
     {
         #region [ Members ]
@@ -1172,7 +1171,7 @@ namespace GSF
         /// <param name="value1">Left hand <see cref="Ticks"/> operand.</param>
         /// <param name="value2">Right hand <see cref="Ticks"/> operand.</param>
         /// <returns><see cref="double"/> value representing the result.</returns>
-        [EditorBrowsable(EditorBrowsableState.Advanced), SpecialName]
+        //[EditorBrowsable(EditorBrowsableState.Advanced), SpecialName]
         public static double op_Exponent(Ticks value1, Ticks value2)
         {
             return Math.Pow((double)value1.Value, (double)value2.Value);

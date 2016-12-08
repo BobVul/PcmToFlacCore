@@ -66,8 +66,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Media;
-using GSF.IO;
 using GSF.Parsing;
 
 namespace GSF.Media
@@ -905,20 +903,6 @@ namespace GSF.Media
         }
 
         /// <summary>
-        /// Plays the wave file using <see cref="SoundPlayer"/>.
-        /// </summary>
-        public void Play()
-        {
-            using (BlockAllocatedMemoryStream stream = new BlockAllocatedMemoryStream())
-            {
-                SoundPlayer player = new SoundPlayer(stream);
-                Save(stream);
-                stream.Position = 0;
-                player.Play();
-            }
-        }
-
-        /// <summary>
         /// Saves wave file to the specified file name.
         /// </summary>
         /// <param name="waveFileName">Desired destination file name for wave file.</param>
@@ -926,7 +910,7 @@ namespace GSF.Media
         {
             FileStream stream = File.Create(waveFileName);
             Save(stream);
-            stream.Close();
+            stream.Dispose();
         }
 
         /// <summary>
@@ -1009,7 +993,7 @@ namespace GSF.Media
         {
             FileStream source = File.Open(waveFileName, FileMode.Open, FileAccess.Read, FileShare.Read);
             WaveFile waveFile = Load(source, loadData);
-            source.Close();
+            source.Dispose();
             return waveFile;
         }
 

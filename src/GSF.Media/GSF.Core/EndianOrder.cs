@@ -73,6 +73,7 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 
 namespace GSF
 {
@@ -638,7 +639,7 @@ namespace GSF
         /// <exception cref="InvalidOperationException">Cannot get bytes for <paramref name="value"/> type.</exception>
         public byte[] GetBytes<T>(T value) where T : struct, IConvertible
         {
-            if (!typeof(T).IsPrimitive)
+            if (!typeof(T).GetTypeInfo().IsPrimitive)
                 throw new ArgumentException("Value type is not primitive", nameof(value));
 
             IConvertible nativeValue = (IConvertible)value;
@@ -872,7 +873,7 @@ namespace GSF
         /// <returns>Length of bytes copied into array based on size of <typeparamref name="T"/>.</returns>
         public int CopyBytes<T>(T value, byte[] destinationArray, int destinationIndex) where T : struct, IConvertible
         {
-            if (!typeof(T).IsPrimitive)
+            if (!typeof(T).GetTypeInfo().IsPrimitive)
                 throw new ArgumentException("Value type is not primitive", nameof(value));
 
             IConvertible nativeValue = (IConvertible)value;

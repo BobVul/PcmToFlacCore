@@ -64,15 +64,13 @@
 #endregion
 
 using System;
-using System.Runtime.Serialization;
 
 namespace GSF
 {
     /// <summary>
     /// Represents the base class for alternate timetag implementations.
     /// </summary>
-    [Serializable]
-    public abstract class TimeTagBase : ISerializable, IComparable, IComparable<TimeTagBase>, IComparable<DateTime>, IEquatable<TimeTagBase>, IEquatable<DateTime>, IFormattable
+    public abstract class TimeTagBase : IComparable, IComparable<TimeTagBase>, IComparable<DateTime>, IEquatable<TimeTagBase>, IEquatable<DateTime>, IFormattable
     {
         #region [ Members ]
 
@@ -105,18 +103,6 @@ namespace GSF
             // Zero base 100-nanosecond ticks from 1/1/1970 and convert to seconds.
             m_baseDateOffsetTicks = baseDateOffsetTicks;
             m_seconds = (timestamp - m_baseDateOffsetTicks) / (decimal)Ticks.PerSecond;
-        }
-
-        /// <summary>
-        /// Creates a new <see cref="TimeTagBase"/> from serialization parameters.
-        /// </summary>
-        /// <param name="info">The <see cref="SerializationInfo"/> with populated with data.</param>
-        /// <param name="context">The source <see cref="StreamingContext"/> for this deserialization.</param>
-        protected TimeTagBase(SerializationInfo info, StreamingContext context)
-        {
-            // Deserializes timetag
-            m_baseDateOffsetTicks = info.GetInt64("baseDateOffsetTicks");
-            m_seconds = info.GetDecimal("seconds");
         }
 
         #endregion
@@ -295,18 +281,6 @@ namespace GSF
         public override int GetHashCode()
         {
             return m_seconds.GetHashCode();
-        }
-
-        /// <summary>
-        /// Populates a <see cref="SerializationInfo"/> with the data needed to serialize the target object.
-        /// </summary>
-        /// <param name="info">The <see cref="SerializationInfo"/> to populate with data.</param>
-        /// <param name="context">The destination <see cref="StreamingContext"/> for this serialization.</param>
-        public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            // Serializes timetag.
-            info.AddValue("baseDateOffsetTicks", m_baseDateOffsetTicks);
-            info.AddValue("seconds", m_seconds);
         }
 
         #endregion

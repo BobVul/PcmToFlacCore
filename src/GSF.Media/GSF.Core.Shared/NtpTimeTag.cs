@@ -60,7 +60,6 @@
 #endregion
 
 using System;
-using System.Runtime.Serialization;
 
 namespace GSF
 {
@@ -72,7 +71,6 @@ namespace GSF
     /// are reckoned from 6h 28m 16s UTC on 7 February 2036. This gives the <see cref="NtpTimeTag"/>
     /// class a functioning range of 1968-01-20 03:14:08 to 2104-02-26 09:42:23.
     /// </remarks>
-    [Serializable]
     public class NtpTimeTag : TimeTagBase
     {
         #region [ Constructors ]
@@ -114,16 +112,6 @@ namespace GSF
         /// </remarks>
         public NtpTimeTag(Ticks timestamp)
             : base(GetBaseDateOffsetTicks(timestamp), timestamp)
-        {
-        }
-
-        /// <summary>
-        /// Creates a new <see cref="NtpTimeTag"/> from serialization parameters.
-        /// </summary>
-        /// <param name="info">The <see cref="SerializationInfo"/> with populated with data.</param>
-        /// <param name="context">The source <see cref="StreamingContext"/> for this deserialization.</param>
-        protected NtpTimeTag(SerializationInfo info, StreamingContext context)
-            : base(info, context)
         {
         }
 

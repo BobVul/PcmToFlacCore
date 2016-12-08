@@ -3,8 +3,8 @@
 
   "dependencies": {
     "FlacBox": "1.0.0-*",
-    "NETStandard.Library": "1.6.1",
-    "Wav.Net": "1.0.0-*"
+    "GSF.Media": "1.0.0-*",
+    "NETStandard.Library": "1.6.1"
   },
 
   "frameworks": {

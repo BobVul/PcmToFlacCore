@@ -175,7 +175,7 @@ namespace GSF.Media
         /// </summary>
         public void Close()
         {
-            m_waveStream?.Close();
+            m_waveStream?.Dispose();
         }
 
         /// <summary>

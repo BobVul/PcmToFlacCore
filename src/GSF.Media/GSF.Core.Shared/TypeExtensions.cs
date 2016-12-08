@@ -44,6 +44,7 @@
 
 using System;
 using System.Linq;
+using System.Reflection;
 
 namespace GSF
 {
@@ -113,11 +114,11 @@ namespace GSF
             // TODO: Test with Mono to see if type comparison now works as expected
             if ((object)type.BaseType == null || type.BaseType.FullName.Equals("System.Object", StringComparison.Ordinal) || type.BaseType.FullName.Equals("System.MarshalByRefObject", StringComparison.Ordinal))
 #else
-            if ((object)type.BaseType == null || type.BaseType == typeof(object) || type.BaseType == typeof(MarshalByRefObject))
+            if ((object)type.GetTypeInfo().BaseType == null || type.GetTypeInfo().BaseType == typeof(object))
 #endif
                 return type;
 
-            return GetRootType(type.BaseType);
+            return GetRootType(type.GetTypeInfo().BaseType);
         }
     }
 }

@@ -963,7 +963,7 @@ namespace GSF.Media.Music
             if ((object)m_ID == null && m_frequency > 0.0D)
             {
                 // Attempt to look up note ID
-                foreach (FieldInfo field in typeof(Note).GetFields())
+                foreach (FieldInfo field in typeof(Note).GetTypeInfo().GetFields())
                 {
                     if (m_frequency == (double)field.GetRawConstantValue())
                     {
@@ -1176,7 +1176,7 @@ namespace GSF.Media.Music
             if (sharp && (note == 'B' || note == 'E'))
                 throw new ArgumentException("Sharps are not defined for notes \'B\' and \'E\'");
 
-            return (double)typeof(Note).GetField(string.Format("{0}{1}{2}", note, octave, sharp ? "S" : "")).GetRawConstantValue();
+            return (double)typeof(Note).GetTypeInfo().GetField(string.Format("{0}{1}{2}", note, octave, sharp ? "S" : "")).GetRawConstantValue();
         }
 
         /// <summary>

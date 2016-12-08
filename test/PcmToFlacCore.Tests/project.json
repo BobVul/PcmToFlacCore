@@ -1,10 +1,10 @@
 ﻿{
-  "version": "1.0.0-*",
+  "version": "1.0.0",
   "testRunner": "xunit",
   "dependencies": {
-    "xunit": "2.2.0-beta4-build3444",
-    "Wav.Net": "1.0.0-*",
-    "dotnet-test-xunit": "2.2.0-preview2-build1029"
+    "dotnet-test-xunit": "2.2.0-preview2-build1029",
+    "PcmToFlacCore": "1.0.0-*",
+    "xunit": "2.2.0-beta4-build3444"
   },
   "frameworks": {
     "netcoreapp1.0": {

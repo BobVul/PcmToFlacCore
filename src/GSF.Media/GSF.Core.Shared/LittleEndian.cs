@@ -58,6 +58,7 @@
 #endregion
 
 using System;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace GSF
@@ -560,7 +561,7 @@ namespace GSF
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static byte[] GetBytes<T>(T value) where T : struct, IConvertible
         {
-            if (!typeof(T).IsPrimitive)
+            if (!typeof(T).GetTypeInfo().IsPrimitive)
                 throw new ArgumentException("Value type is not primitive", nameof(value));
 
             IConvertible nativeValue = (IConvertible)value;
@@ -820,7 +821,7 @@ namespace GSF
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int CopyBytes<T>(T value, byte[] destinationArray, int destinationIndex) where T : struct, IConvertible
         {
-            if (!typeof(T).IsPrimitive)
+            if (!typeof(T).GetTypeInfo().IsPrimitive)
                 throw new ArgumentException("Value type is not primitive", nameof(value));
 
             IConvertible nativeValue = (IConvertible)value;
@@ -1101,7 +1102,7 @@ namespace GSF
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static unsafe int CopyBytes<T>(T value, byte* destination) where T : struct, IConvertible
         {
-            if (!typeof(T).IsPrimitive)
+            if (!typeof(T).GetTypeInfo().IsPrimitive)
                 throw new ArgumentException("Value type is not primitive", nameof(value));
 
             IConvertible nativeValue = (IConvertible)value;

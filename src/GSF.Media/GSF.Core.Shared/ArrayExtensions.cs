@@ -45,7 +45,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using GSF.IO;
 
 namespace GSF
 {
@@ -704,7 +703,7 @@ namespace GSF
             if ((object)buffers == null)
                 throw new ArgumentNullException(nameof(buffers));
 
-            using (BlockAllocatedMemoryStream combinedBuffer = new BlockAllocatedMemoryStream())
+            using (MemoryStream combinedBuffer = new MemoryStream())
             {
                 // Combine all currently queued buffers
                 for (int x = 0; x < buffers.Length; x++)
@@ -733,7 +732,7 @@ namespace GSF
 
             fixed (byte* ptrToBytes = bytes)
             {
-                structure = (T)Marshal.PtrToStructure(new IntPtr(ptrToBytes), typeof(T));
+                structure = Marshal.PtrToStructure<T>(new IntPtr(ptrToBytes));
             }
 
             return structure;
@@ -748,7 +747,7 @@ namespace GSF
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T ReadStructure<T>(this BinaryReader reader) where T : struct
         {
-            return reader.ReadBytes(Marshal.SizeOf(typeof(T))).ReadStructure<T>();
+            return reader.ReadBytes(Marshal.SizeOf<T>()).ReadStructure<T>();
         }
     }
 }

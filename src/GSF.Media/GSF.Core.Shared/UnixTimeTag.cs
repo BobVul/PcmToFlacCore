@@ -60,14 +60,12 @@
 #endregion
 
 using System;
-using System.Runtime.Serialization;
 
 namespace GSF
 {
     /// <summary>
     /// Represents a standard Unix timetag.
     /// </summary>
-    [Serializable]
     public class UnixTimeTag : TimeTagBase
     {
         #region [ Constructors ]
@@ -99,16 +97,6 @@ namespace GSF
         /// </remarks>
         public UnixTimeTag(Ticks timestamp)
             : base(BaseTicks, timestamp)
-        {
-        }
-
-        /// <summary>
-        /// Creates a new <see cref="UnixTimeTag"/> from serialization parameters.
-        /// </summary>
-        /// <param name="info">The <see cref="SerializationInfo"/> with populated with data.</param>
-        /// <param name="context">The source <see cref="StreamingContext"/> for this deserialization.</param>
-        protected UnixTimeTag(SerializationInfo info, StreamingContext context)
-            : base(info, context)
         {
         }
 

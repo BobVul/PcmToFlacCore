@@ -109,7 +109,6 @@ namespace GSF.Units
     /// </para>
     /// </remarks>
     // ReSharper disable RedundantNameQualifier
-    [Serializable]
     public struct Time : IComparable, IFormattable, IConvertible, IComparable<Time>, IComparable<TimeSpan>, IComparable<Double>, IEquatable<Time>, IEquatable<TimeSpan>, IEquatable<Double>
     {
         #region [ Members ]
@@ -948,7 +947,7 @@ namespace GSF.Units
         /// <param name="value1">A <see cref="Time"/> object as the left hand operand.</param>
         /// <param name="value2">A <see cref="Time"/> object as the right hand operand.</param>
         /// <returns>A <see cref="Double"/> value as the result of the operation.</returns>
-        [EditorBrowsable(EditorBrowsableState.Advanced), SpecialName]
+        //[EditorBrowsable(EditorBrowsableState.Advanced), SpecialName]
         public static double op_Exponent(Time value1, Time value2)
         {
             return Math.Pow((double)value1.m_value, (double)value2.m_value);

@@ -48,6 +48,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace GSF
@@ -341,7 +342,7 @@ namespace GSF
 
             Type itemType = item.GetType();
 
-            if (!itemType.IsValueType)
+            if (!itemType.GetTypeInfo().IsValueType)
                 return false;
 
             // Handle common types
